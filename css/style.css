@@ -83,7 +83,7 @@ li button:hover {
 .complete-btn{
     padding: 6px; 
     border: none;    
-    background-color: #ffffff; 
+    background-color: #d6d6d6; 
     color: #4cae4c;
     cursor: pointer; 
     font-size: 24px;
@@ -93,8 +93,17 @@ li button:hover {
 .delete-btn{
     padding: 6px; 
     border: none;    
-    background-color: #ffffff; 
+    background-color: #d6d6d6; 
     color: #da1b1b;
     cursor: pointer; 
     font-size: 24px;
+}
+
+.complete-btn:hover { 
+    background-color: #cdc7c7; 
+}
+
+.task-title--done {
+    text-decoration: line-through; /* Зачёркиваем текст */
+    color: #888; /* Меняем цвет на серый */
 }

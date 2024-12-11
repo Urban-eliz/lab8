@@ -6,6 +6,10 @@ const taskList = document.querySelector('#taskList');
 //добавление задачи
 form.addEventListener('submit', addTask)
 
+// отмечаем задачу выполненной
+
+taskList.addEventListener('click', doneTask)
+
 
 // удаление задачи
 taskList.addEventListener('click', deleteTask)
@@ -52,60 +56,10 @@ function deleteTask(event) {
     }
 }
 
-
-
-
-    
-
-
-
-
-// // Получаем элементы из DOM
-// const taskInput = document.getElementById('taskInput');
-// const addTaskBtn = document.getElementById('addTaskBtn');
-// const taskList = document.getElementById('taskList');
-
-// // Добавление новой задачи
-// addTaskBtn.addEventListener('click', () => {
-//     const taskText = taskInput.value.trim();
-
-//     if (taskText === '') {
-//         alert('Введите текст задачи!');
-//         return;
-//     }
-
-//     // Создаём новый элемент задачи
-//     const listItem = document.createElement('li');
-//     listItem.textContent = taskText;
-
-//     // Добавляем кнопки управления
-//     const completeBtn = document.createElement('button');
-//     completeBtn.textContent = '✓';
-//     completeBtn.style.backgroundColor = '#5cb85c'; // Зелёная кнопка
-//     completeBtn.addEventListener('click', () => {
-//         listItem.classList.toggle('completed');
-//     });
-
-//     const deleteBtn = document.createElement('button');
-//     deleteBtn.textContent = 'X';
-//     deleteBtn.addEventListener('click', () => {
-//         taskList.removeChild(listItem);
-//     });
-
-//     // Добавляем кнопки в задачу
-//     listItem.appendChild(completeBtn);
-//     listItem.appendChild(deleteBtn);
-
-//     // Добавляем задачу в список
-//     taskList.appendChild(listItem);
-
-//     // Очищаем поле ввода
-//     taskInput.value = '';
-// });
-
-// // Добавляем поддержку Enter для добавления задачи
-// taskInput.addEventListener('keypress', (e) => {
-//     if (e.key === 'Enter') {
-//         addTaskBtn.click();
-//     }
-// });
+function doneTask(event){
+    // Проверяем, что клик был по кнопке выполнения
+    if (event.target.classList.contains('complete-btn')) {
+        const taskItem = event.target.closest('li'); // Находим соответствующий элемент <li>
+        taskItem.classList.toggle('task-title--done'); // отмечаем выполненным
+    }
+}
