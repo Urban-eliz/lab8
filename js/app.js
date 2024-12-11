@@ -3,8 +3,16 @@ const form = document.querySelector('#form');
 const taskInput = document.querySelector('#taskInput');
 const taskList = document.querySelector('#taskList');
 
-form.addEventListener('submit', function(event){
-   //отменяем отправку формы
+//добавление задачи
+form.addEventListener('submit', addTask)
+
+
+// удаление задачи
+taskList.addEventListener('click', deleteTask)
+
+// функции
+function addTask(event) {
+    //отменяем отправку формы
     event.preventDefault();
     
 
@@ -20,37 +28,30 @@ form.addEventListener('submit', function(event){
      taskItem.innerHTML = `
          <span class="task-text">${taskText}</span>
          <div class="task-actions">
-             <button class="complete-btn">Выполнить</button>
-             <button class="delete-btn">Удалить</button>
+             <button class="complete-btn">&#10004</button>
+             <button class="delete-btn">&#10006</button>
          </div>
      `;
-     console.log(taskItem);
-
      
-    // // формируем разметку для новой задачи
-    // const taskHTML = `
-    // </div> <ul id="taskList">${taskText}</ul> 
-    //     </div>`
+     // Добавляем задачу в список
+    taskList.appendChild(taskItem);
 
-    // добавить задачу на страницу
+    // Очищаем поле ввода
+    taskInput.value = '';
 
+    //перевод фокуса на поле ввода
+    taskInput.focus();
 
+}
 
-    // // Проверяем, что поле ввода не пустое
-    // if (taskText === '') {
-    //     alert('Введите задачу');
-    //     return;
-    // }
+function deleteTask(event) {
+    // Проверяем, что клик был по кнопке удаления
+    if (event.target.classList.contains('delete-btn')) {
+        const taskItem = event.target.closest('li'); // Находим соответствующий элемент <li>
+        taskItem.remove(); // Удаляем его из DOM
+    }
+}
 
-    
-
-    // // Добавляем задачу в список
-    // taskList.appendChild(taskItem);
-
-    // // Очищаем поле ввода
-    // taskInput.value = '';
-
-})
 
 
 

@@ -78,3 +78,23 @@ li button {
 li button:hover { 
     background-color: #c9302c; 
 }
+
+
+.complete-btn{
+    padding: 6px; 
+    border: none;    
+    background-color: #ffffff; 
+    color: #4cae4c;
+    cursor: pointer; 
+    font-size: 24px;
+
+}
+
+.delete-btn{
+    padding: 6px; 
+    border: none;    
+    background-color: #ffffff; 
+    color: #da1b1b;
+    cursor: pointer; 
+    font-size: 24px;
+}
