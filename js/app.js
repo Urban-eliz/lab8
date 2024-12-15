@@ -3,6 +3,11 @@ const form = document.querySelector('#form');
 const taskInput = document.querySelector('#taskInput');
 const taskList = document.querySelector('#taskList');
 
+// Фильтры
+const filterAll = document.querySelector('#filterAll');
+const filterCompleted = document.querySelector('#filterCompleted');
+const filterUncompleted = document.querySelector('#filterUncompleted');
+
 //массив который содержит в себе все задачи
 let tasks = [];
 
@@ -25,6 +30,11 @@ taskList.addEventListener('click', doneTask)
 
 // удаление задачи
 taskList.addEventListener('click', deleteTask)
+
+
+filterAll.addEventListener('click', () => filterTasks('all'));
+filterCompleted.addEventListener('click', () => filterTasks('completed'));
+filterUncompleted.addEventListener('click', () => filterTasks('uncompleted'));
 
 
 // функции
@@ -130,4 +140,26 @@ function renderTask(task){
      // Добавляем задачу в список
     taskList.appendChild(taskItem);
 
+}
+
+function filterTasks(filter) {
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    if (filter === 'all') {
+        filterAll.classList.add('active');
+    } else if (filter === 'completed') {
+        filterCompleted.classList.add('active');
+    } else if (filter === 'uncompleted') {
+        filterUncompleted.classList.add('active');
+    }
+
+    taskList.innerHTML = '';
+    let filteredTasks = [];
+    if (filter === 'all') {
+        filteredTasks = tasks;
+    } else if (filter === 'completed') {
+        filteredTasks = tasks.filter(task => task.done);
+    } else if (filter === 'uncompleted') {
+        filteredTasks = tasks.filter(task => !task.done);
+    }
+    filteredTasks.forEach(task => renderTask(task));
 }

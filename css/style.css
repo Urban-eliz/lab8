@@ -107,3 +107,33 @@ li button:hover {
     text-decoration: line-through; /* Зачёркиваем текст */
     color: #888; /* Меняем цвет на серый */
 }
+
+
+
+
+
+
+.filter-section {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0;
+}
+
+.filter-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ddd;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.filter-btn.active {
+    background-color: #5cb85c;
+    color: white;
+}
+
+.filter-btn:hover {
+    background-color: #4cae4c;
+    color: white;
+}
