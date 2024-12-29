@@ -11,7 +11,7 @@ const filterUncompleted = document.querySelector('#filterUncompleted');
 //массив который содержит в себе все задачи
 let tasks = [];
 
-if (localStorage.getItem('tasks')) {
+if (localStorage.getItem('tasks')) { // проверяем есть ли объекты в локальном хранилище
     tasks = JSON.parse(localStorage.getItem('tasks'));
     tasks.forEach((task) => renderTask(task));
 }
